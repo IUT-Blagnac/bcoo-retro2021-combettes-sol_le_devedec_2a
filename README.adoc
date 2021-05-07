@@ -2,9 +2,8 @@
 
 == Membre du groupe
 
-- Dupont (2A)
+-  Le  Devedec Maxime (2A)
 - Durand (3B)
-- ...
 
 == Outils utilisés/requis
 
