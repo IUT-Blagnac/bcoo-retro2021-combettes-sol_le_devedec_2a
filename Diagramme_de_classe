@@ -1,0 +1,87 @@
+@startuml
+
+skinparam headerFontSize 20
+skinparam headerFontColor black
+header <u>Diagramme de classe de Discord</u>
+
+hide circle
+
+class Compte {
+    #Identifiant
+    Pseudo
+    PhotoDeProfil
+    numeroTel
+    email
+    listServeur
+    listAmis
+    }
+
+class Etat {
+    mute
+    sourd
+    connecte
+    absent
+    nePasDeranger
+    invisible
+}
+
+class Message {
+    #Identifiant
+    Contenu
+    date 
+    heure 
+    longeur
+}
+
+class Discussion { 
+Personne1
+Personne1
+listMessage
+AppelVocal
+}
+
+class Serveur {
+    #Identifiant
+    nom 
+    listChannel
+    permission
+    rôles
+    listCompte
+}
+
+class DossierChannel {
+    #Identifiant
+    nom
+    listChannel
+    permission
+}
+
+class Channel {
+    #Identifiant
+    nom
+    type
+        textuel
+            listMessage
+        vocal
+            place
+            listCompte
+    permission
+}
+
+class Overlay {
+    position
+    taille 
+    listJeux
+    listCompte
+}
+
+Compte "1..*" -r- "1..*" Serveur
+Compte "2" -- "0..*" Message
+Compte "1" -l- "1" Overlay
+Compte "1" -- "1" Etat
+
+Serveur "0..*" <|-d- "1" DossierChannel
+Serveur "0..*" <|-r- "1" Channel
+Message "1..*" <|-- "1" Discussion
+
+@enduml
