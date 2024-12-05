@@ -1,0 +1,32 @@
+@startuml
+
+skinparam headerFontSize 20
+skinparam headerFontColor black
+header <u>Diagramme de séquences de Discord</u>
+
+actor ":Utilisateur" as uti
+participant ":Système" as sys
+
+uti -> sys: DemandeConnection
+sys --> uti: ConnectionEffectué
+'------------------------
+uti -> sys: DemandeCréationServeur
+sys --> uti: ServeurPrivée
+'------------------------
+uti -> sys: CréationInvitation
+sys --> uti: RaccourciRejoindreServeur
+'------------------------
+uti -> sys: DemandeCréationSalon
+uti --> sys: SalonPrivé
+'------------------------
+uti -> sys: PermissionPersonnalisable
+sys --> uti: AppliquePermission
+'------------------------
+loop Pour chaque message ou appel envoyé
+uti -> sys: MessagePrivée
+sys --> uti: EnvoieDuMessage
+'------------------------
+uti -> sys: AppelAmi
+sys --> uti: CréationVocalPrivée
+end
+@enduml

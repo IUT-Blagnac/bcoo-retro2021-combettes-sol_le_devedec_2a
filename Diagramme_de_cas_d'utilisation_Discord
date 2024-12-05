@@ -1,0 +1,45 @@
+@startuml
+
+skinparam headerFontSize 20
+skinparam headerFontColor black
+header <u>Diagramme de cas d'utilisation de Discord</u>
+
+:Utilisateur 1: as uti1
+:Utilisateur 2: as uti2
+:Modérateur: as mod 
+
+mod --|> uti1
+mod -l-|> uti2
+
+rectangle "Serveur" {
+    (Création de serveur) as serv
+    (Dossier de channel) as dos 
+    (Channel) as cha
+    (Modération du serveur) as modserv
+    (Rejoindre un serveur discord) as rj
+
+}
+
+rectangle "Personnel" {
+    (Discussion) as dis
+    (Appel) as ap 
+    (Message) as msg  
+    (Amis) as ami
+}
+
+serv <|-- dos
+serv <|-- cha
+
+dis <|-- ap
+dis <|-- msg
+dis <|-- ami
+
+uti1 --> dis
+uti1 --> serv
+uti1 --> modserv 
+mod --> modserv
+uti2 --> rj
+uti2 --> dis
+
+@enduml
+
